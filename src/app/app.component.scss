@@ -1,0 +1,81 @@
+@import "/src/_variables";
+
+.header {
+  background-color: $primary;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $accent;
+
+  &-links {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+}
+
+.container {
+  width: 500px;
+  margin: 20px auto;
+  display: grid;
+  gap: 1rem;
+  margin-top: 4rem;
+}
+
+.title {
+  text-align: center;
+}
+
+.form {
+  background-color: white;
+  border-radius: 6px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.input {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  flex: 1;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.tasks {
+  background-color: white;
+  border-radius: 6px;
+  padding: 20px;
+  display: grid;
+  gap: 1rem;
+}
+
+.task {
+  background-color: white;
+  padding: 10px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ccc;
+  gap: 1rem;
+
+  &-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &.done &-content span {
+    opacity: 0.5;
+    position: relative;
+    text-decoration: line-through;
+    text-decoration-color: $secondary;
+  }
+}

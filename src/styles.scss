@@ -1,1 +1,35 @@
-/* You can add global styles to this file, and also import other style files */
+@import "reset";
+@import "variables";
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: $accent;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+button {
+  border: none;
+  color: $accent;
+  padding: 0.5rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.primary {
+    background-color: $primary;
+  }
+
+  &.secondary {
+    background-color: $secondary;
+  }
+
+  &.tertiary {
+    background-color: $tertiary;
+  }
+}
