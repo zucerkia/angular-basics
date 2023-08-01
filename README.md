@@ -25,3 +25,17 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+---
+
+# Sprint 1
+
+## Task 1
+
+Crear una pantalla que me permita:
+
+- Agregar tareas a una lista
+- Marcar la lista como completada
+- Eliminar la tarea de la lista
+
+![Alt text](image.png)
