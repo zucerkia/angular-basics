@@ -1,31 +1,48 @@
-import { Component } from '@angular/core';
-import { Task, Tasks } from 'src/app/interfaces/tasks.interface';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { Tasks, TasksApi, updateTaskParams, Task } from 'src/app/interfaces/tasks.interface';
+import { TodoService } from 'src/app/services/todo.service';
 
+type Form = {
+  title: string
+}
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.scss']
 })
-export class TodoComponent {
-  title: string = ''
-  tasks: Tasks = [
-    {id: 1, title: 'Dar la clase de hoy', isCheck: false},
-    {id: 2, title: 'Hacer la compra', isCheck: true},
-    {id: 3, title: 'Hacer la tarea', isCheck: true}
-  ]
+export class TodoComponent implements OnInit {
+  form: Form = {
+    title: ''
+  }
+
+  tasks: Tasks = []
+
+  constructor(private todoService: TodoService, private http:HttpClient) {
+    this.tasks = todoService.tasks
+  }
 
   removeTask(id: number) {
-    const newTasks = this.tasks.filter((task) => task.id !== id)
-    this.tasks = newTasks
+    this.todoService.removeTask(id)
+    this.tasks = this.todoService.tasks
   }
 
   addTask() {
-    const newTask: Task = {
-      id: new Date().getTime(),
-      title: this.title,
-      isCheck: false
-    }
+    this.tasks = this.todoService.addTask(this.form.title)
+  }
 
-    this.tasks.push(newTask)
+  updateTask(updateParams: updateTaskParams) {
+    this.tasks = this.todoService.updateTask(updateParams)
+  }
+
+  ngOnInit() {
+    this.http.get<TasksApi>('https://dummyjson.com/todos').subscribe((data) => {
+      this.tasks = data.todos.map(({id, completed, todo}) => ({
+        id,
+        title: todo,
+        isCheck: completed
+      }))
+      this.todoService.tasks = this.tasks
+    } )
   }
 }

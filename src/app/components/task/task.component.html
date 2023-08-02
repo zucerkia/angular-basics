@@ -1,5 +1,5 @@
 <div class="task">
-  <input type="checkbox" [checked]="task.isCheck">
+  <input type="checkbox" [checked]="task.isCheck" [(ngModel)]="task.isCheck">
   <span>{{ task.title }}</span>
-  <button class="button tertiary" (click)="delete()">Eliminar</button>
+  <button class="button tertiary" (click)="delete()" [disabled]="task.isCheck">Eliminar</button>
 </div>

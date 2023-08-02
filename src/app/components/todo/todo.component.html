@@ -1,11 +1,12 @@
 <section class="container">
   <h1 class="title">TODO List</h1>
-  <div class="form">
-    <input [(ngModel)]="title" class="input" type="text">
-    <button class="button primary" (click)="addTask()">Agregar</button>
-  </div>
+  <form class="form">
+    <input name="title" #inputTodo="ngModel" [(ngModel)]="form.title" class="input" type="text" required="true">
+    <button type="submit" class="button primary" (click)="addTask()" [disabled]="inputTodo.invalid">Agregar</button>
+  </form>
   <div class="tasks">
-    <app-task (remove)="removeTask($event)" [task]="task" *ngFor="let task of tasks"></app-task>
+    <app-task (check)="updateTask($event)" (remove)="removeTask($event)" [task]="task"
+      *ngFor="let task of tasks"></app-task>
     <p *ngIf="tasks.length === 0" class="empty">No hay tareas por completar</p>
   </div>
 </section>

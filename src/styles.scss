@@ -25,4 +25,9 @@ body {
   &.tertiary {
     background-color: $tertiary;
   }
+
+  &:disabled {
+    cursor: not-allowed;
+    background-color: gray;
+  }
 }
